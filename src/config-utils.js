@@ -7,24 +7,36 @@ import {smartBorders} from './utils'
 const buildConf = (userConf = {}, defaultConf) => {
   let conf = {}
   forEach(defaultConf, (item, key) => {
-    // if it's a leaf
-    if (item.iteratee !== undefined) {
-      if (!item.iteratee) {
-        conf[key] = Object.keys(userConf).indexOf(key) > -1
-          ? userConf[key] : item.value
-      } else if (Object.keys(userConf).indexOf(key) > -1) {
-        if (isFunction(userConf[key])) {
-          conf[key] = userConf[key]
-        } else {
-          conf[key] = userConf[key]
-        }
-      } else {
-        conf[key] = () => item.value
-      }
-    // else we go deeper
-    } else {
-      conf[key] = buildConf(userConf[key], item)
+    const userConfHasKey = Object.keys(userConf).indexOf(key) > -1
+    if (userConfHasKey) {
+      conf[key] = userConf[key]
     }
+    else if (item.iteratee === false) {
+      conf[key] = item.value
+    }
+    else {
+      conf[key] = () => item.value
+    }
+
+
+    // if it's a leaf
+    // if (item.iteratee !== undefined) {
+    //   if (!item.iteratee) {
+    //     conf[key] = Object.keys(userConf).indexOf(key) > -1
+    //       ? userConf[key] : item.value
+    //   } else if (Object.keys(userConf).indexOf(key) > -1) {
+    //     if (isFunction(userConf[key])) {
+    //       conf[key] = userConf[key]
+    //     } else {
+    //       conf[key] = userConf[key]
+    //     }
+    //   } else {
+    //     conf[key] = () => item.value
+    //   }
+    // // else we go deeper
+    // } else {
+    //   conf[key] = buildConf(userConf[key], item)
+    // }
   })
 
   return conf

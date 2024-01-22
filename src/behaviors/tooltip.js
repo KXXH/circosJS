@@ -6,6 +6,7 @@ import './tooltip.css'
 export function registerTooltip (track, instance, element, trackParams) {
   track.dispatch.on('mouseover', (d) => {
     instance.tip
+    .classed('active', true)
       .html(trackParams.tooltipContent(d))
       .transition()
       .style('opacity', 0.9)
@@ -15,6 +16,7 @@ export function registerTooltip (track, instance, element, trackParams) {
 
   track.dispatch.on('mouseout', (d) => {
     instance.tip
+      .classed('active', false)
       .transition()
       .duration(500)
       .style('opacity', 0)

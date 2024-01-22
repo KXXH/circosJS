@@ -1,5 +1,6 @@
 div.circos-tooltip {
   position: absolute;
+  visibility: hidden;
   text-align: center;
   padding: 5px 10px;
   background: #111111;
@@ -7,4 +8,11 @@ div.circos-tooltip {
   border: 0px;
   pointer-events: none;
   z-index: 1000;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+div.circos-tooltip.active {
+  visibility: visible;
 }

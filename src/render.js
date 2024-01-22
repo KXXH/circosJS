@@ -5,9 +5,14 @@ import renderLayout from './layout/render'
 export default function render (ids = [], removeTracks, circos) {
   const renderAll = ids.length === 0
 
+  // const svg = circos.svg
+  //   .attr('width', circos.conf.width)
+  //   .attr('height', circos.conf.height)
+
   const svg = circos.svg
-    .attr('width', circos.conf.width)
-    .attr('height', circos.conf.height)
+    .attr('viewBox', `0 0 ${circos.conf.width} ${circos.conf.height}`)
+    .style('object-fit', 'contain')
+    .style('aspect-ratio', '1 / 1')
 
   if (removeTracks) {
     forEach(circos.tracks, (track, trackId) => {

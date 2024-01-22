@@ -27,8 +27,12 @@ class Core {
     this.tracks = {}
     this._layout = null
     this.conf = defaultsDeep(conf, defaultConf)
-    const container = select(this.conf.container).append('div')
+    const container = select(this.conf.container)
+      .append('div')
+      .classed('circos-container', true)
       .style('position', 'relative')
+      .style('max-width', '100%')
+      .style('flex', '1')
     this.svg = container.append('svg')
     if (select('body').select('.circos-tooltip').empty()) {
       this.tip = select('body').append('div')
@@ -104,9 +108,10 @@ class Core {
   }
 }
 
-const Circos = (conf) => {
+export const Circos = (conf) => {
   const instance = new Core(conf)
   return instance
 }
 
-module.exports = Circos
+// module.exports = Circos
+
