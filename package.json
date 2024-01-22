@@ -1,5 +1,5 @@
 {
-  "name": "circos",
+  "name": "@intelli-circos/circos",
   "version": "2.2.0",
   "description": "A d3js library to build circos graphs",
   "main": "index.js",
