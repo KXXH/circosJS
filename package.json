@@ -8,7 +8,7 @@
     "test:tdd": "NODE_ENV=test mocha --compilers js:babel-register --require ignore-styles --reporter nyan --watch src/*.test.js src/**/*.test.js",
     "coveralls": "CIRCOSJS_COVERAGE=1 mocha test --reporter mocha-lcov-reporter src/**/*.test.js | ./node_modules/coveralls/bin/coveralls.js",
     "start": "webpack --watch",
-    "build": "NODE_ENV=prod webpack --config webpack.config.lib.js --optimize-minimize && webpack --config webpack.config.lib.js --optimize-minimize && webpack --config webpack.config.js"
+    "build": "NODE_ENV=prod webpack --config webpack.config.lib.js && webpack --config webpack.config.lib.js && webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,8 @@
     "sinon-chai": "^3.1.0",
     "standard": "^11.0.1",
     "style-loader": "^0.21.0",
-    "webpack": "^3.3.0"
+    "webpack": "5",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "clipboard-js": "^0.3.6",
