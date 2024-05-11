@@ -2,6 +2,7 @@ const path = require('path')
 
 module.exports = {
   entry: './src/circos.js',
+  devtool: 'source-map', // 添加这一行
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'circos.module.js',
